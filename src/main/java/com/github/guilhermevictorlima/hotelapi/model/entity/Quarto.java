@@ -1,4 +1,4 @@
-package com.github.guilhermevictorlima.hotelapi.model;
+package com.github.guilhermevictorlima.hotelapi.model.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

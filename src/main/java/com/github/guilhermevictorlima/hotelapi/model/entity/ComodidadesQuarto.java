@@ -1,4 +1,4 @@
-package com.github.guilhermevictorlima.hotelapi.model;
+package com.github.guilhermevictorlima.hotelapi.model.entity;
 
 import com.github.guilhermevictorlima.hotelapi.model.enums.Comodidade;
 import jakarta.persistence.*;
