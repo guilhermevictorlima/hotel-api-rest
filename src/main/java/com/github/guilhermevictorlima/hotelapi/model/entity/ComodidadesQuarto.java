@@ -70,7 +70,7 @@ public class ComodidadesQuarto {
     }
 
     @Embeddable
-    private static class PkComodidadesQuarto implements Serializable {
+    public static class PkComodidadesQuarto implements Serializable {
 
         @ManyToOne
         @JoinColumn(name = "quarto_id")
