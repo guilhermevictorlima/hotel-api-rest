@@ -1,7 +1,14 @@
 package com.github.guilhermevictorlima.hotelapi.model.entity;
 
 import com.github.guilhermevictorlima.hotelapi.model.enums.Comodidade;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -13,6 +20,12 @@ public class ComodidadesQuarto {
     @Id
     @EmbeddedId
     private PkComodidadesQuarto pk;
+
+    public ComodidadesQuarto() {}
+
+    public ComodidadesQuarto(Quarto quarto, Comodidade comodidade) {
+        this.pk = new PkComodidadesQuarto(quarto, comodidade);
+    }
 
     public Comodidade getComodidade() {
         return pk.getComodidade();
@@ -59,12 +72,19 @@ public class ComodidadesQuarto {
     @Embeddable
     private static class PkComodidadesQuarto implements Serializable {
 
-        @Enumerated(EnumType.STRING)
-        private Comodidade comodidade;
-
         @ManyToOne
         @JoinColumn(name = "quarto_id")
         private Quarto quarto;
+
+        @Enumerated(EnumType.STRING)
+        private Comodidade comodidade;
+
+        public PkComodidadesQuarto() {}
+
+        public PkComodidadesQuarto(Quarto quarto, Comodidade comodidade) {
+            this.comodidade = comodidade;
+            this.quarto = quarto;
+        }
 
         public Comodidade getComodidade() {
             return comodidade;

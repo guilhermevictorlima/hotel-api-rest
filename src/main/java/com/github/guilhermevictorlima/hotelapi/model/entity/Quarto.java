@@ -1,5 +1,6 @@
 package com.github.guilhermevictorlima.hotelapi.model.entity;
 
+import com.github.guilhermevictorlima.hotelapi.model.form.CadastrarQuartoForm;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.ColumnDefault;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,7 +24,7 @@ public class Quarto {
     private Long quartoId;
 
     @OneToMany(mappedBy = "pk.quarto")
-    private List<ComodidadesQuarto> comodidades;
+    private List<ComodidadesQuarto> comodidades = new ArrayList<>();
 
     @Column(length = 100, nullable = false)
     private String titulo;
@@ -36,6 +38,17 @@ public class Quarto {
 
     @Column(nullable = false)
     private int dimensao;
+    
+    public Quarto() {}
+    
+    public Quarto(CadastrarQuartoForm form) {
+        this.titulo = form.getTitulo();
+        this.descricao = form.getDescricao();
+        this.capacidadeMaxima = form.getCapacidadeMaxima();
+        this.dimensao = form.getDimensao();
+
+        form.getComodidades().forEach(comodidade -> this.comodidades.add(new ComodidadesQuarto(this, comodidade)));
+    }
 
     public Long getQuartoId() {
         return quartoId;
