@@ -13,7 +13,7 @@ public class CadastrarQuartoForm {
     @NotBlank(message = "Forneça um título válido")
     @Size(max = 100, message = "Título deve ter no máximo 100 caracteres")
     private String titulo;
-    @NotBlank(message = "Forneça uma descrção válida")
+    @NotBlank(message = "Forneça uma descrição válida")
     @Size(max = 1000, message = "Descrição deve ter no máximo 1000 caracteres")
     private String descricao;
     @Min(value = 1, message = "A capacidade máxima deve ser de pelo menos 1 pessoa")
