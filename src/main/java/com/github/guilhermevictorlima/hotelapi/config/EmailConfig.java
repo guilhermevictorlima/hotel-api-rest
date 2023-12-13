@@ -1,4 +1,4 @@
-package com.github.guilhermevictorlima.hotelapi;
+package com.github.guilhermevictorlima.hotelapi.config;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.context.annotation.Bean;
