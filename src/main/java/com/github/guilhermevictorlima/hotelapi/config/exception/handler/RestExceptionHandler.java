@@ -1,6 +1,5 @@
 package com.github.guilhermevictorlima.hotelapi.config.exception.handler;
 
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
