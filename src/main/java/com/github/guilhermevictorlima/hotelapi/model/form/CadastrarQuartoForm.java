@@ -10,15 +10,15 @@ import java.util.List;
 
 public class CadastrarQuartoForm {
 
-    @NotBlank
-    @Size(max = 100)
+    @NotBlank(message = "Forneça um título válido")
+    @Size(max = 100, message = "Título deve ter no máximo 100 caracteres")
     private String titulo;
-    @NotBlank
-    @Size(max = 1000)
+    @NotBlank(message = "Forneça uma descrção válida")
+    @Size(max = 1000, message = "Descrição deve ter no máximo 1000 caracteres")
     private String descricao;
-    @Min(1)
+    @Min(value = 1, message = "A capacidade máxima deve ser de pelo menos 1 pessoa")
     private int capacidadeMaxima;
-    @Min(1)
+    @Min(value = 1, message = "Forneça uma dimensão em metros quadrados válida")
     private int dimensao;
 
     private List<Comodidade> comodidades = new ArrayList<>();
